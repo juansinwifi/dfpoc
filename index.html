@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Centered HTML Ring with Border and Slider Control in Millimeters</title>
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #f7f7f7;
+  }
+  .circle {
+    border: 2px solid #3498db;
+    background-color: transparent;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 15mm; /* Set width in millimeters */
+    height: 15mm; /* Set height in millimeters */
+    position: relative;
+  }
+  .circle-size-label {
+    position: absolute;
+    color: #3498db;
+    font-size: 1em;
+  }
+  .slider-container {
+    margin: 20px 0;
+  }
+</style>
+</head>
+<body>
+
+<div class="circle" id="circle">
+  <span class="circle-size-label" id="circleSizeLabel">15.0mm</span>
+</div>
+
+<div class="slider-container">
+  <label for="circleSize">Ring size (mm):</label>
+  <input type="range" id="circleSize" value="15.0" min="9.0" max="25.0" step="0.1" oninput="updateCircleSize(this.value)" />
+  <span id="sliderValue">15.0mm</span>
+</div>
+
+<script>
+  function updateCircleSize(sizeInMm) {
+    var circle = document.getElementById('circle');
+    var sizeLabel = document.getElementById('circleSizeLabel');
+    var sliderValue = document.getElementById('sliderValue');
+    // Update the ring's width and height
+    circle.style.width = parseFloat(sizeInMm).toFixed(1) + 'mm';
+    circle.style.height = parseFloat(sizeInMm).toFixed(1) + 'mm';
+    // Update the label text
+    sizeLabel.textContent = parseFloat(sizeInMm).toFixed(1) + 'mm';
+    // Update the slider value text
+    sliderValue.textContent = parseFloat(sizeInMm).toFixed(1) + 'mm';
+  }
+</script>
+
+</body>
+</html>
